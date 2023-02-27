@@ -1,38 +1,32 @@
 <template>
-  <div>
-    <div class="post">
-      <div><strong>Название:</strong> пост о JavaSciript</div>
-      <div><strong>Описание:</strong> текст о JavaSciript</div>
-    </div>
-    <div class="post">
-      <div><strong>Название:</strong> пост о JavaSciript</div>
-      <div><strong>Описание:</strong> текст о JavaSciript</div>
-    </div>
-    <div class="post">
-      <div><strong>Название:</strong> пост о JavaSciript</div>
-      <div><strong>Описание:</strong> текст о JavaSciript</div>
-    </div>
-    <div class="post">
-      <div><strong>Название:</strong> пост о JavaSciript</div>
-      <div><strong>Описание:</strong> текст о JavaSciript</div>
+  <div class="app">
+    <div>
+      <PostForm @create="createPost" />
+      <PostList :posts="posts" />
     </div>
   </div>
 </template>
 
 <script>
+import PostForm from "@/components/PostForm";
+import PostList from "@/components/PostList";
 export default {
+  components: {
+    PostForm,
+    PostList,
+  },
   data() {
     return {
-      likes: 0,
-      dislikes: 0,
+      posts: [
+        { id: 1, title: "Пост 1 о JavaScript", body: "текст о JavaScript" },
+        { id: 2, title: "Пост 2 о JavaScript", body: "текст о JavaScript" },
+        { id: 3, title: "Пост 3 о JavaScript", body: "текст о JavaScript" },
+      ],
     };
   },
   methods: {
-    addLike() {
-      this.likes += 1;
-    },
-    addDislike() {
-      this.likes -= 1;
+    createPost(post) {
+      this.posts.push(post);
     },
   },
 };
@@ -43,9 +37,9 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.post {
-  padding: 15px;
-  border: 1px solid #efefef;
-  margin-top: 15px;
+
+.app {
+  padding: 20px;
 }
 </style>
+<!-- TIMING 53:50 -->
