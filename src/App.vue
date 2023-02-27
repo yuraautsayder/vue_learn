@@ -1,9 +1,20 @@
 <template>
   <div>
-    <button @click="addLike">likes</button>
-    <button @click="addDislike">dislike</button>
-    <div>
-      Likes <strong>{{ likes }}</strong>
+    <div class="post">
+      <div><strong>Название:</strong> пост о JavaSciript</div>
+      <div><strong>Описание:</strong> текст о JavaSciript</div>
+    </div>
+    <div class="post">
+      <div><strong>Название:</strong> пост о JavaSciript</div>
+      <div><strong>Описание:</strong> текст о JavaSciript</div>
+    </div>
+    <div class="post">
+      <div><strong>Название:</strong> пост о JavaSciript</div>
+      <div><strong>Описание:</strong> текст о JavaSciript</div>
+    </div>
+    <div class="post">
+      <div><strong>Название:</strong> пост о JavaSciript</div>
+      <div><strong>Описание:</strong> текст о JavaSciript</div>
     </div>
   </div>
 </template>
@@ -26,4 +37,15 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.post {
+  padding: 15px;
+  border: 1px solid #efefef;
+  margin-top: 15px;
+}
+</style>
