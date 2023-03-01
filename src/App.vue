@@ -2,7 +2,7 @@
   <div class="app">
     <div>
       <PostForm @create="createPost" />
-      <PostList :posts="posts" />
+      <PostList :posts="posts" @remove="removePost" />
     </div>
   </div>
 </template>
@@ -27,6 +27,9 @@ export default {
   methods: {
     createPost(post) {
       this.posts.push(post);
+    },
+    removePost(post) {
+      this.posts = this.posts.filder((p) => p.id !== post.id);
     },
   },
 };
