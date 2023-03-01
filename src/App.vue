@@ -29,7 +29,7 @@ export default {
       this.posts.push(post);
     },
     removePost(post) {
-      this.posts = this.posts.filder((p) => p.id !== post.id);
+      this.posts = this.posts.filter((p) => p.id !== post.id);
     },
   },
 };
