@@ -1,7 +1,9 @@
 <template>
     <div class="app">
         <h1>Страница с постами</h1>
-        <my-button @click="showDialog">Создать пост</my-button>
+        <my-button @click="showDialog" style="margin: 15px 0"
+            >Создать пост</my-button
+        >
         <my-dialog v-model:show="dialogVisible">
             <PostForm @create="createPost" />
         </my-dialog>
@@ -66,4 +68,4 @@
         padding: 20px;
     }
 </style>
-<!-- TIMING 1:10:20 -->
+<!-- TIMING 1:17:20 -->
