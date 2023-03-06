@@ -8,7 +8,12 @@
             <PostForm @create="createPost" />
         </my-dialog>
         <div>
-            <PostList :posts="posts" @remove="removePost" />
+            <PostList
+                :posts="posts"
+                @remove="removePost"
+                v-if="!isPostLoading"
+            />
+            <div v-else>Идет загрузка...</div>
         </div>
     </div>
 </template>
@@ -16,6 +21,7 @@
 <script>
     import PostForm from "@/components/PostForm";
     import PostList from "@/components/PostList";
+    import axios from "axios";
     export default {
         components: {
             PostForm,
@@ -23,24 +29,9 @@
         },
         data() {
             return {
-                posts: [
-                    {
-                        id: 1,
-                        title: "Пост 1 о JavaScript",
-                        body: "текст о JavaScript",
-                    },
-                    {
-                        id: 2,
-                        title: "Пост 2 о JavaScript",
-                        body: "текст о JavaScript",
-                    },
-                    {
-                        id: 3,
-                        title: "Пост 3 о JavaScript",
-                        body: "текст о JavaScript",
-                    },
-                ],
+                posts: [],
                 dialogVisible: false,
+                isPostLoading: false,
             };
         },
         methods: {
@@ -54,6 +45,23 @@
             showDialog() {
                 this.dialogVisible = true;
             },
+            async fetchPosts() {
+                try {
+                    this.isPostLoading = true;
+
+                    const response = await axios.get(
+                        "https://jsonplaceholder.typicode.com/posts?_limit=10"
+                    );
+                    this.posts = response.data;
+                } catch (e) {
+                    alert("oshibka");
+                } finally {
+                    this.isPostLoading = false;
+                }
+            },
+        },
+        mounted() {
+            this.fetchPosts();
         },
     };
 </script>
@@ -68,4 +76,4 @@
         padding: 20px;
     }
 </style>
-<!-- TIMING 1:17:20 -->
+<!-- TIMING 1:25:20 -->
