@@ -13,7 +13,7 @@
         </my-dialog>
         <div>
             <PostList
-                :posts="posts"
+                :posts="sortedPosts"
                 @remove="removePost"
                 v-if="!isPostLoading"
             />
@@ -78,6 +78,16 @@
         mounted() {
             this.fetchPosts();
         },
+        computed: {
+            sortedPosts() {
+                return [...this.posts].sort((post1, post2) => {
+                    return post1[this.selectedSort]?.localeCompare(post2[this.selectedSort])
+                })
+            },
+        },
+        watch: {
+
+        }
     };
 </script>
 <style>
@@ -96,4 +106,4 @@
         margin: 15px 0;
     }
 </style>
-<!-- TIMING 1:25:20 -->
+<!-- TIMING 1:39:10 -->
