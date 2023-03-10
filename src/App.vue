@@ -3,7 +3,9 @@
         <h1>Страница с постами</h1>
         <div class="app_btns">
             <my-button @click="showDialog">Создать пост</my-button>
-            <my-select v-model="selectedSort" />
+            <my-select v-model="selectedSort"
+            :options="selectOptions"
+            />
         </div>
 
         <my-dialog v-model:show="dialogVisible">
